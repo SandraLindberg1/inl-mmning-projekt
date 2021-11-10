@@ -1,8 +1,27 @@
+<?php get_header();
+?>
+
 <?php
-get_header(); ?>
+$title = get_field('title');
+$description = get_field('description');
+$getImage = get_field('tila');
 
-    <h1><?php the_title() ?></h1>
-<?php get_template_part('/includes/section','content'); ?>
+/*
+var_dump(get_field('tila'));
+*/
 
+$image = $getImage['sizes']['large'];
+
+if($title) {
+    echo $title;
+}
+
+
+if($description): ?>
+    <p><?php echo nl2br($description); ?></>
+
+<?php endif;  ?>
+
+    <img class="img-fluid hero-img" src="<?php echo $image; ?>">
 <?php
 get_footer();
